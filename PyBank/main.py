@@ -38,12 +38,23 @@ num_months=len(set(dates))
 total_profit=sum(profit)
 
 #avg=total_profit1/len(profit1)
+print("Financial Analysis")
+
+print("------------------------------")
 
 print(f"Total Number of Month in CSV File is: {num_months}")
-print(f"Total Profit : {total_profit}")
+print(f"Total : {total_profit}")
 print(f"Average: {avg_change}")
 print(f"Greatest Increase in price :{max_date} ${max_increase}")
 print(f"Greatest Decrease in price :{min_date} ${max_decrease}")
+
+with open('output.txt', 'w') as f:
+    f.write(f"Total Number of Month in CSV File is: {num_months}")
+    f.write(f"Total : {total_profit}")
+    f.write(f"Average: {avg_change}")
+    f.write(f"Greatest Increase in price :{max_date} ${max_increase}")
+    f.write(f"Greatest Decrease in price :{min_date} ${max_decrease}")
+
 #print(f"Graetes valur:{greatest_value}")
     #for i in reader:
      #   print(i)
