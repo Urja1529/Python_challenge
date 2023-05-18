@@ -8,23 +8,24 @@ changes=[]
 previous_profit=0
 max_increase=0
 max_decrease=0
-
+#giving path file ,reading them and skipping Header line
 path=os.path.join('..','Resources','budget_data.csv')
 with open(path,'r') as data_file:
     reader=csv.reader(data_file,)
     header=next(reader)
     print(reader)
-     
+     #Counting Total Months and Total Profit and loss
     for row in reader:
         date_str=row[0]
         date_obj=datetime.strptime(date_str,"%b-%y")   
         dates.append(date_obj.strftime('%m-%y'))
         profit.append(int(row[1]))
         value=int(row[1])
-      
+        #Counting Changes in profit/loss
         change=value-previous_profit
         if previous_profit !=0:
             changes.append(change)
+            #Calculating Greatest increase and decrease
             if change > max_increase:
                 max_increase=change
                 max_date=row[0]
@@ -55,6 +56,3 @@ with open('output.txt', 'w') as f:
     f.write(f"Greatest Increase in price :{max_date} ${max_increase}")
     f.write(f"Greatest Decrease in price :{min_date} ${max_decrease}")
 
-#print(f"Graetes valur:{greatest_value}")
-    #for i in reader:
-     #   print(i)
